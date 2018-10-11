@@ -1,0 +1,85 @@
+﻿<script>
+
+
+	/**
+	 * Finds the greatest common divider between two numbers
+	 *
+	 * Finds the greatest common diveders between two natural numbers.
+	 * This WILL NOT work for numbers that are lower then 1
+	 *
+	 * @param int num1 First number 
+	 * @param int num2 Second number
+	 *
+	 * @return int Greatest common divisor 
+	 */
+	function findGreatestCommonDivisor(num1, num2) {
+
+		//Set the divisable as the larger number and divider as the smaller 
+		let gcdDivider = num1 < num2 ? num1 : num2;
+		let gcdDivisable = num1 > num2 ? num1 : num2;
+
+		let gcdFound = false;
+		let gcd = 0;
+
+		/*
+		 * Divide numbers untill the reminder is 0. 
+		 * The next divider is the reminder of the last division.
+		 * The next divisable is the diveder of the last division.
+		 */
+		while (!gcdFound) {
+			let reminder = gcdDivisable % gcdDivider;
+			if (reminder == 0) {
+				gcdFound = true;
+				gcd = gcdDivider;
+			} else {
+				gcdDivisable = gcdDivider;
+				gcdDivider = reminder;
+			}
+		}
+
+		return gcd;
+	}
+
+	/**
+	 * Find the lowest common multiple of two numbers
+	 *
+	 * Find the lower common multiple of two integer numbers 
+	 * that are bigger then 0.
+	 *
+	 * @param int num1 First number
+	 * @param int num2 Second number
+	 *
+	 * @return Lowest common multiple
+	 */
+	function findLowestCommonMultiple(num1, num2) {
+		
+		let gcd = findGreatestCommonDivisor(num1, num2);
+		let leastCommonMultiple = num1 * num2 / gcd;
+		
+
+		return leastCommonMultiple; 
+	}
+
+    /*
+     * Take user input
+     * compute the result
+     * repeat untill user wants to exit
+     */
+	let userAnwer = 0;
+	
+	do {
+		let number1 = Number(prompt("Ievadiet pirmo skaitli"));
+		let number2 = Number(prompt("Ievadiet otro skaitli"));
+		
+		let answer = findLowestCommonMultiple(number1, number2);
+		
+		alert("Mazākais kopīgais dalāmais : " + answer);
+		
+		userAnswer = Number(prompt("Vēlaties turpināt (0) vai beigt (1) programmas darbību : "));
+		
+		
+	} while(userAnswer === 0);
+	
+	
+
+</script>
