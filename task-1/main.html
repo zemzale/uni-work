@@ -1,5 +1,9 @@
 ﻿<script>
-
+/*
+ * Alberts Zemz�le, az18071
+ * A32 Atrast divu natur�lu skait�u m un n maz�ko kop�go dal�mo
+ * Programma izveidota 13/09/2018
+ */
 
 	/**
 	 * Finds the greatest common divider between two numbers
@@ -59,6 +63,35 @@
 
 		return leastCommonMultiple; 
 	}
+	
+	/*
+ * Take natural number input with a promt message
+ *
+ * Take natural number user input from stdin with a simple string promt
+ * message. The function will core dump on non integer input
+ * IS RECURSIVE will return only when the input is right
+ *
+ * @param string msg Message to promt user with when inputing
+ *
+ * @return Integer value from user
+ */
+function takeNaturalNumberInput(msg) {
+    let inputNumber = 0;
+    let correctInput = false;
+
+    //Ask for user input until the number inputed is natural
+    do{
+       inputNumber = Number(prompt(msg));
+        if (inputNumber < 0) {
+            alert( "Number must be natural");
+        } else {
+            correctInput = true;
+        }
+    }while(!correctInput);
+
+    return inputNumber;
+}
+	
 
     /*
      * Take user input
@@ -68,15 +101,19 @@
 	let userAnwer = 0;
 	
 	do {
-		let number1 = Number(prompt("Ievadiet pirmo skaitli"));
-		let number2 = Number(prompt("Ievadiet otro skaitli"));
+		let number1 = takeNaturalNumberInput("Input first number");
+		let number2 = takeNaturalNumberInput("Input second number");
+		let answer = 0;
+
+		if (number1 === 0|| number2 === 0){
+			answer = 0;
+		} else {
+			answer = findLowestCommonMultiple(number1, number2);
+		}	
 		
-		let answer = findLowestCommonMultiple(number1, number2);
+		alert("Least common multiple : " + answer);
 		
-		alert("Mazākais kopīgais dalāmais : " + answer);
-		
-		userAnswer = Number(prompt("Vēlaties turpināt (0) vai beigt (1) programmas darbību : "));
-		
+		userAnswer = Number(prompt("Continue(0) or exit(1)"));
 		
 	} while(userAnswer === 0);
 	
