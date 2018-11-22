@@ -15,7 +15,7 @@
                 "showReuseMessage": true
             },
             "args" : [
-                "-g", "${relativeFile}"
+                "-std=c++0x", "-g", "${relativeFile}"
             ],
             "group": {
                 "kind": "build",
