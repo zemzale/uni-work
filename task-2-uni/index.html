@@ -1,0 +1,102 @@
+<script>
+
+/**
+ * Get sum of all the digits form a number
+ * 
+ * @var var number Number to use when getting sum of digits
+ * 
+ * @return var
+ */
+function sumOfDigits(number)
+{
+    var sum = 0;
+    do
+    {
+        sum += Math.floor(number % 10);
+        number /= 10;
+    } while (number > 0);
+
+    return sum;
+}
+
+/**
+ * Get natural number input form user with promt 
+ * 
+ * @var string promt Text that promts the user
+ * 
+ * @return var
+ */
+function getNumberInput(msg)
+{
+    var inputNumber = 0;
+    var correctInput = false;
+
+    //Ask for user input until the number inputed is natural
+    do
+    {
+        inputNumber = Number(prompt(msg));
+        if (inputNumber < 0)
+        {
+            console.log("Number must be natural" );
+        }
+        else
+        {
+            correctInput = true;
+        }
+    } while (!correctInput);
+
+    return inputNumber;
+}
+	var userAnwer = 0;
+	
+	do {
+
+		/*
+		 * Get 3 number input
+		 * Split all numbers varo digits
+		 */
+		var number1 = getNumberInput("Input first number");
+		var sum1 = sumOfDigits(number1);
+		var number2 = getNumberInput("Input second number");
+		var sum2 = sumOfDigits(number2);
+		var number3 = getNumberInput("Input third number");
+		var sum3 = sumOfDigits(number3);
+
+		// Get all number diffs
+		var diff1 = Math.abs(number1 - number2);
+		var diff2 = Math.abs(number1 - number3);
+		var diff3 = Math.abs(number2 - number3);
+		
+		//Output somethings if verbose specified
+	   
+		console.log("Number 1 digit sum is " +sum1 );
+		console.log("Number 2 digit sum is " +sum2 );
+		console.log("Number 3 digit sum is " +sum3 );
+
+		console.log("Diff between number 1 and 2 is " +diff1 );
+		console.log("Diff between number 1 and 3 is " +diff2 );
+		console.log("Diff between number 2 and 3 is " +diff3 );
+
+		// Go over all the posible diffs and prvar out when the value found
+		if (sum1 == diff3)
+		{
+			alert("Number 1(" +number1 +") digit sum(" +sum1 +")");
+			alert(" is the same as number 2(" +number2 +") and 3(" +number3 +") diff(" +diff3 +")" );
+		}
+
+		if (sum2 == diff2)
+		{
+			alert("Number 2(" +number2 +") digit sum(" +sum2 +")");
+			alert(" is the same as number 1(" +number1 +") and 3(" +number3 +") diff(" +diff2 +")" );
+		}
+
+		if (sum3 == diff1)
+		{
+			alert("Number 3(" +number3 +") digit sum(" +sum3 +")");
+			alert(" is the same as number 1(" +number1 +") and 2(" +number2 +") diff(" +diff1 +")" );
+		}
+		userAnswer = Number(prompt("Continue(0) or exit(1)"));
+		
+	} while(userAnswer === 0);
+
+</script>
