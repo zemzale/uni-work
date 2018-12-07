@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1544169649 source:c:\users\students\desktop\uzd4\uzd4\main.cpp
+	<iostream>
+	<NumberStack.h>
+
+1544169719 source:c:\users\students\desktop\uzd4\uzd4\src\numberstack.cpp
+	"NumberStack.h"
+	"iostream"
+
+1544168230 c:\users\students\desktop\uzd4\uzd4\include\numberstack.h
+
