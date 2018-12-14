@@ -9,3 +9,15 @@
 
 1544168230 c:\users\students\desktop\uzd4\uzd4\include\numberstack.h
 
+1544773841 source:c:\users\students\downloads\uni-work-master\uni-work-master\uzd4\main.cpp
+	<iostream>
+	<NumberStack.h>
+	<stdexcept>
+
+1544773268 c:\users\students\downloads\uni-work-master\uni-work-master\uzd4\include\numberstack.h
+
+1544773464 source:c:\users\students\downloads\uni-work-master\uni-work-master\uzd4\src\numberstack.cpp
+	"NumberStack.h"
+	<iostream>
+	<stdexcept>
+

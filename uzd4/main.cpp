@@ -17,6 +17,7 @@ izòem no steka augðçjo elementu un atgrieþ tâ vçrtîbu, (5) metode "Count", kas a
 
 #include <iostream>
 #include <NumberStack.h>
+#include <stdexcept>
 
 using namespace std;
 
@@ -35,15 +36,29 @@ int main()
         std::cout << "Stack is not full" << std::endl;
     }
 
-    std::cout << "Last element in stack : " << n.top() << std::endl;
-    n.pop();
-    n.push(1);
-    n.push(2);
-    n.push(3);
-    n.push(4);
-    n.push(5);
-    n.push(6);
-    n.push(6);
+    try {
+         std::cout << "Last element in stack : " << n.top() << std::endl;
+    } catch(...) {
+        std::cout << "Stack empty" << std::endl;
+    }
+    try {
+        n.pop();
+    } catch(...) {
+        std::cout << "Stack empty" << std::endl;
+    }
+
+    try {
+        n.push(1);
+        n.push(2);
+        n.push(3);
+        n.push(4);
+        n.push(5);
+        n.push(6);
+        n.push(6);
+    } catch(...) {
+        std::cout << "Stack full" << std::endl;
+    }
+
     if (n.isFull()) {
         std::cout << "Stack is full" << std::endl;
     } else {
@@ -51,21 +66,38 @@ int main()
     }
 
     std::cout << "Poping last element in stack : " << n.pop() << std::endl;
-    n.push(1);
+    try {
+        n.push(1);
+    } catch (const std::out_of_range& e) {
+        std::cout << e.what() << std::endl;
+    }
+
     std::cout << "Stack has : " << n.count() << " elements" << std::endl;
-    n.push(2);
-    n.push(3);
-    std::cout << "Poping last element in stack : " << n.pop() << std::endl;
-    std::cout << "Poping last element in stack : " << n.pop() << std::endl;
-    std::cout << "Poping last element in stack : " << n.pop() << std::endl;
-    std::cout << "Poping last element in stack : " << n.pop() << std::endl;
-    std::cout << "Poping last element in stack : " << n.pop() << std::endl;
-    std::cout << "Poping last element in stack : " << n.pop() << std::endl;
-    n.push(1);
-    n.push(2);
-    n.push(3);
+    try {
+        n.push(2);
+        n.push(3);
+    } catch (const std::out_of_range& e) {
+        std::cout << e.what() << std::endl;
+    }
 
+    try {
+        std::cout << "Poping last element in stack : " << n.pop() << std::endl;
+        std::cout << "Poping last element in stack : " << n.pop() << std::endl;
+        std::cout << "Poping last element in stack : " << n.pop() << std::endl;
+        std::cout << "Poping last element in stack : " << n.pop() << std::endl;
+        std::cout << "Poping last element in stack : " << n.pop() << std::endl;
+        std::cout << "Poping last element in stack : " << n.pop() << std::endl;
+    } catch(std::out_of_range& e) {
+        std::cout << e.what() << std::endl;
+    }
 
+    try {
+        n.push(1);
+        n.push(2);
+        n.push(3);
+    } catch (const std::out_of_range& e) {
+        std::cout << e.what() << std::endl;
+    }
 
     return 0;
 }
